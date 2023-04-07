@@ -1,0 +1,22 @@
+.img-header{
+    width: 120px;
+    height: 140px;
+}
+
+li a.nav-link:hover {
+  color:green;
+   text-decoration:none;
+} 
+
+
+@media only screen and (min-width: 992px) {
+    .navbar .navbar-nav .nav-item .nav-link {
+      padding: 0 0.5em;
+      line-height: 40px;
+
+    }
+    .navbar .navbar-nav .nav-item:not(:last-child) .nav-link {
+      border-right: 1px solid #D3D3D3;
+      line-height: 40px;
+    }
+  }
