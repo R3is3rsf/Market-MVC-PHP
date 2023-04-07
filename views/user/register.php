@@ -1,6 +1,6 @@
 <div class="container">
     <h1>Register user</h1>
-    <form action="index.php?controller=User&action=save" method="POST">
+    <form action="<?=base_url?>user/save" method="POST">
         <label class="form-label" for="name">Name</label>
         <input class="form-control" type="text" name="name" id="name" placeholder="Write your"  required>
         <label class="form-label" for="lastname">Lastname</label>
