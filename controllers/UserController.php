@@ -9,13 +9,48 @@ class UserController{
     }
     public function save(){
         if(isset($_POST)){
-            $user = new User();
-            $user->setName($_POST['name']);
-            $user->setLastname($_POST['lastname']);
-            $user->setEmail($_POST['email']);
-            $user->setPassword($_POST['password']);
-            $user->save();
+
+            $name = empty($_POST['name']) ? $_POST['name'] : false;
+            $lastname = isset($_POST['lastname']) ? $_POST['lastname'] : false;
+            $email = isset($_POST['email']) ? $_POST['email'] : false;
+            $password = isset($_POST['password']) ? $_POST['password'] : false;
+            $error=array();
+
+            if(empty($name) || is_numeric($name) || preg_match("/[0-9]/",$name)){
+                $error['name']="Name  $name is not valid";
+            }
+            if(empty($lastname) || is_numeric($lastname) || preg_match("/[0-9]/",$lastname)){
+                $error['lastname']="Lastname $lastname is not valid";
+            }
+            if(empty($email) ||  !filter_var($email,FILTER_VALIDATE_EMAIL)){
+                $error['email']="Email $email is not valid";
+            }
+            if(empty($password)){
+                $error['password'] = "Password is empty";
+            }
+
+            if(count($error)==0){
+
+                $user = new User();
+                $user->setName($name);
+                $user->setLastname($lastname);
+                $user->setEmail($email);
+                $user->setPassword($password);
+                $save =  $user->save();
+
+                if($save){
+                    $_SESSION['register']= "COMPLETE";
+                }else{
+                    $_SESSION['register']= "FAIL";
+                }    
+            }else{
+                $_SESSION['error'] = $error;
+            }
+  
+        }else{
+            $_SESSION['register']= "FAIL";
         }
+        header('location:'.base_url.'user/register');
 
     }
 }
