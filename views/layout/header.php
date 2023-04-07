@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clothes Store</title>
+    <title>Games Store</title>
     <link rel="stylesheet" href="<?=base_url?>./assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?=base_url?>./assets/css/custom.css">
 </head>
 <body>
     <header>
          <div class="jumbotron d-flex bg-light">
-           <a href="#"> <img class="rounded pt-2 ps-2 pb-2 img-header" src="<?=base_url?>./assets/img/camiseta.png" alt="pig"></a>
-           <h1 class="display-5 text-primary align-self-center ps-4 fw-bold">Pets Store</h1>
+           <a href="#"> <img class="rounded pt-2 ps-2 pb-2 img-header" src="<?=base_url?>./assets/img/logo.png" alt="pig"></a>
+           <h1 class="display-5 text-primary align-self-center ps-4 fw-bold">Games Store</h1>
          </div>
          <nav class="p-0 navbar navbar-expand-lg navbar-dark bg-dark">
            <div class="container-fluid">
