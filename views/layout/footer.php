@@ -2,8 +2,8 @@
         </div>
 </main>
 <footer
-          class="text-center text-lg-start text-white position-fixed bottom-0 w-100"
-          style="background-color: #3e4551"
+          class="d-none text-center text-lg-start text-white position-fixed bottom-0 w-100"
+          style="background-color: #3e4551;"
           >
     <div
          class="text-center p-3"

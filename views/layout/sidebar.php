@@ -17,11 +17,15 @@
 
                     <?php endif; ?>
                     <div class="d-flex flex-column mt-4">
-                        <a class="text-decoration-none" href="">Mis pedidos</a>
-                        <a class="text-decoration-none" href="">Gestionar categorias</a>
-                        <a class="text-decoration-none" href="">Gestionar productos</a>
+                        <?php if(isset($_SESSION['login']->rol) && $_SESSION['login']->rol==1): ?>
+                            <a class="text-decoration-none" href="<?=base_url?>category/index">Gestionar categorias</a>
+                            <a class="text-decoration-none" href="<?=base_url?>product/index">Gestionar productos</a>
+                            <a class="text-decoration-none" href="">Gestionar productos</a>
+                        <?php endif; ?>    
+
                         <?php if(isset($_SESSION['login'])): ?>
-                        <a href="<?=base_url?>user/logout">Salir</a>    
+                            <a class="text-decoration-none" href="">Mis pedidos</a>
+                            <a href="<?=base_url?>user/logout">Salir</a>    
                         <?php endif; ?>    
                     </div>
 </aside>

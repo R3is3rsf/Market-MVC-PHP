@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mb-4 pb-4">
     <h1>Register user</h1>
     <?php if(isset($_SESSION['register'])):?>    
      <?php if($_SESSION['register']=='FAIL'):
