@@ -22,7 +22,7 @@
            endif;
          ?>    
         <label class="form-label" for="name">Name</label>
-        <input class="form-control" type="text" name="name" id="name" placeholder="Write your"  >
+        <input class="form-control" type="text" name="name" id="name" placeholder="Write your name"  >
         <?php if(isset($_SESSION['error']['lastname'])):  ?>
            <h4 class="text-danger"><?= $_SESSION['error']['lastname'];?></h4> 
         <?php endif; ?>   
@@ -41,7 +41,7 @@
         <label class="form-label" for="repassword">Repeat your password</label>
         <input class="form-control" type="password" name="repassword" id="repassword" placeholder="Repeat your password" required>
 
-        <button class="btn btn-primary mt-2">Register</button>
+        <button type="" class="btn btn-primary mt-2">Register</button>
         <?php  Utils::deleteSesion('error');  ?>
        </form>
 </div>

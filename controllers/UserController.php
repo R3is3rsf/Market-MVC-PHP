@@ -10,7 +10,7 @@ class UserController{
     public function save(){
         if(isset($_POST)){
 
-            $name = empty($_POST['name']) ? $_POST['name'] : false;
+            $name = isset($_POST['name']) ? $_POST['name'] : false;
             $lastname = isset($_POST['lastname']) ? $_POST['lastname'] : false;
             $email = isset($_POST['email']) ? $_POST['email'] : false;
             $password = isset($_POST['password']) ? $_POST['password'] : false;
@@ -53,4 +53,29 @@ class UserController{
         header('location:'.base_url.'user/register');
 
     }
+
+    public function login(){
+        if(isset($_POST)){
+            $email= $_POST['email'];
+            $password= $_POST['password'];
+            $user= new User();
+ 
+            $result = $user->login($email,$password);
+            if(is_object($result) && $result){
+                $_SESSION['login']=$result;
+            }
+            header('location:'.base_url);
+        }
+    }
+
+    public function logout(){
+          if($_SESSION['login']){
+            unset($_SESSION['login']);
+
+          }
+            header('location:'.base_url);
+
+        
+    }
+
 }

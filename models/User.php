@@ -35,9 +35,6 @@ class User{
         return $this->image;
     }
 
-    public function setId($id){
-        $this->id=$id;
-    }
     public function setName($name){
         $this->name=$this->db->real_escape_string($name);
     }
@@ -58,6 +55,7 @@ class User{
     }
 
     public function save(){
+
        $sql= "INSERT INTO users VALUES (
         null,
         '{$this->getName()}',
@@ -74,6 +72,20 @@ class User{
           $result=true;
        }
        return $result;
+    }
+
+    public function login($email,$password){
+
+        $sql="SELECT *FROM users WHERE email='{$email}';";
+        $select=$this->db->query($sql);
+        $row = $select->fetch_object();
+        
+        $match  =password_verify($password,$row->password);  
+        if($match){
+            return $row;
+        }else{
+            return false;
+        }
     }
 
 }
