@@ -24,18 +24,12 @@
                     <li class="nav-item">
                         <a class="nav-link " href="#">Inicio</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Categoria 1</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Categoria 2</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Categoria 3</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Categoria 4</a>
-                    </li>
+
+                    <?php $list = new CategoryController;
+                          $list->header();
+                    ?>
+
+
                     <li class="nav-item">
                         <a class="nav-link" href="#">Carrito</a>
                     </li>

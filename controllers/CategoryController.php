@@ -1,16 +1,25 @@
 <?php
 require_once 'models/Category.php';
 class CategoryController{
-
-    public function index(){
+    
+    public function categoryInstance(){
         $categories = new Category;
-        $allCategories = $categories->getAll()->fetch_all();
+        return $allCategories = $categories->getAll()->fetch_all();
+    }
+    public function index(){
+        $allCategories= CategoryController::categoryInstance();
         require_once 'views/category/index.php';
     }
 
+    public function header(){
+        $allCategories= CategoryController::categoryInstance();
+        require_once 'views/category/list.php';
+
+    }
+
+
     public function create(){
         require_once 'views/category/create.php';
-
     }
 
     public function save(){
