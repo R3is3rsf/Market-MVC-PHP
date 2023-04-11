@@ -7,6 +7,7 @@ class CategoryController{
         return $allCategories = $categories->getAll()->fetch_all();
     }
     public function index(){
+        Utils::whoIs();
         $allCategories= CategoryController::categoryInstance();
         require_once 'views/category/index.php';
     }
@@ -19,6 +20,7 @@ class CategoryController{
 
 
     public function create(){
+        Utils::whoIs();
         require_once 'views/category/create.php';
     }
 

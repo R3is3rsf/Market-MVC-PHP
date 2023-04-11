@@ -19,8 +19,8 @@
                     <div class="d-flex flex-column mt-4">
                         <?php if(isset($_SESSION['login']->rol) && $_SESSION['login']->rol==1): ?>
                             <a class="text-decoration-none" href="<?=base_url?>category/index">Gestionar categorias</a>
-                            <a class="text-decoration-none" href="<?=base_url?>product/index">Gestionar productos</a>
-                            <a class="text-decoration-none" href="">Gestionar productos</a>
+                            <a class="text-decoration-none" href="<?=base_url?>product/management">Gestionar productos</a>
+                            <a class="text-decoration-none" href="<?=base_url?>orders/index">Gestionar Pedidos</a>
                         <?php endif; ?>    
 
                         <?php if(isset($_SESSION['login'])): ?>
