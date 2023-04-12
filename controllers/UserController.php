@@ -5,9 +5,11 @@ class UserController{
         echo "UserController";
     }
     public function register(){
+        Utils::whoIs();
         require_once 'views/user/register.php';
     }
     public function save(){
+        Utils::whoIs();
         if(isset($_POST)){
 
             $name = isset($_POST['name']) ? $_POST['name'] : false;

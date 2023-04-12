@@ -25,6 +25,7 @@ class CategoryController{
     }
 
     public function save(){
+        Utils::whoIs();
         if(isset($_POST)){
             $name = isset($_POST['name']) ? $_POST['name'] : false;
             $error=[];

@@ -1,5 +1,4 @@
 <?php
-
 class Product{
 
     private $id;
@@ -17,12 +16,10 @@ class Product{
         $this->db= Database::connect();
     }
 
-    public function setId($id){
-        $this->id=$id;
-    }
-
     public function setCategoryId($category_id){
-        $this->category_id=$category_id;
+        //$this->category_id=intval($category_id);
+        $this->category_id=$this->db->real_escape_string(intval($category_id));
+
     }
 
     public function setName($name){
@@ -34,15 +31,20 @@ class Product{
     }
 
     public function setPrice($price){
-        $this->price=$price;
+        //$this->price=floatval($price);
+        $this->price=$this->db->real_escape_string(floatval($price));
+
     }
 
     public function setStock($stock){
-        $this->stock=$stock;
+        //$this->stock=intval($stock);
+        $this->stock=$this->db->real_escape_string(intval($stock));
     }
 
     public function setOffter($offter){
-        $this->$offter=$offter;
+        //$this->$offter=intval($offter);
+        $this->offter=$this->db->real_escape_string(intval($offter));
+
     }
 
     public function setDate($date){
@@ -59,6 +61,7 @@ class Product{
 
     public function getCategoryId(){
         return $this->category_id;
+        
     }
 
     public function getName(){
@@ -89,6 +92,33 @@ class Product{
         return $this->image;
     }
 
+    public function getAll(){
+        $products= $this->db->query("SELECT p.*,c.name as 'categoria' FROM products p INNER JOIN categories c ON p.category_id=c.id;");
+        return $products;
+    }
+
+    public function save(){
+        $insert="INSERT INTO products VALUES (
+            null,
+            {$this->getCategoryId()},
+            '{$this->getName()}',
+            '{$this->getDescription()}',
+            {$this->getPrice()},
+            {$this->getStock()},
+            {$this->getOffter()},
+            {$this->getDate()},
+            null
+            );";
+
+        $save=$this->db->query($insert);
+
+        $result = false;
+        if($save){
+           $result=true;
+        }
+        return $result;
+     
+    }
 
 
 }
