@@ -27,12 +27,17 @@ class ProductController{
             $offter=isset($_POST['offter']) ? (int)$_POST['offter'] : false;
             $date=isset($_POST['date']) ? $_POST['date'] : false;
             $categoryId=isset($_POST['category']) ? (int)$_POST['category'] : false;
+            //Upload files
+            $file = $_FILES['image'];
+            $fileName= $file['name'];
+            $minetype=$file['type'];  
+ 
             $error=array();
             
-            if(empty($name) || is_numeric($name) || preg_match("/0-9/",$name)){
+            if(empty($name) || is_numeric($name) || !preg_match("/[a-zA-Z]/",$name)){
                 $error['name']="This name is not valid";
             }
-            if(empty($description) || is_numeric($description) || preg_match("/0-9/",$description)){
+            if(empty($description) || is_numeric($description) || !preg_match("/[a-zA-Z]/",$description)){
                 $error['description']="Description is not valid";
             }
             if(empty($price) || preg_match("/[A-Z]+[a-z]/",$price)){
@@ -50,8 +55,11 @@ class ProductController{
             if(empty($categoryId) || !is_numeric($categoryId)){
                 $error['category']="category is invalid";
             }
-            
-            if(count($error)==0){
+            if($minetype!=="image/jpg" && $minetype!=="image/jpeg" && $minetype!=="image/png" && $minetype!=="image/gif"){
+                $error['image']="Image is not valid";
+            }
+
+            if(count($error)==0 && $categoryId && $name && $description && $price && $stock && $offter && $date){
                 $products= new Product;
                 $products->setCategoryId($categoryId);
                 $products->setName($name);
@@ -60,8 +68,20 @@ class ProductController{
                 $products->setStock($stock);
                 $products->setOffter($offter);
                 $products->setDate($date);
-                $products->save();
+                if(!is_dir('uploads/images')){
+                    mkdir('uploads/images',0777,true);
+                }
+                move_uploaded_file($file['tmp_name'],'uploads/images/'.$fileName);
+                $products->setImage($fileName);                
+
+                $result = $products->save();
+                if($result){
+                    $_SESSION['complete']="Register success";
+                }
+            }else{
+                $_SESSION['error']=$error;
             }
+
             header('location:'.base_url.'product/create');
         }
     }

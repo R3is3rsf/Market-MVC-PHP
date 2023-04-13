@@ -107,7 +107,7 @@ class Product{
             {$this->getStock()},
             {$this->getOffter()},
             {$this->getDate()},
-            null
+            '{$this->getImage()}'
             );";
 
         $save=$this->db->query($insert);
