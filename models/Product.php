@@ -101,6 +101,14 @@ class Product{
         return $products;
     }
 
+    public function getById(){
+        $products= $this->db->query("SELECT p.*,c.name as category,c.id as categoryId 
+                                     FROM products p INNER JOIN categories c
+                                     ON p.category_id=c.id WHERE p.id={$this->getId()};"
+                                    );
+        return $products;
+    }
+
     public function save(){
         Utils::whoIs();
         $insert="INSERT INTO products VALUES (
@@ -116,6 +124,30 @@ class Product{
             );";
 
         $save=$this->db->query($insert);
+
+        $result = false;
+        if($save){
+           $result=true;
+        }
+        return $result;
+     
+    }
+
+    public function update(){
+        Utils::whoIs();
+        $update="UPDATE products SET 
+                   category_id = {$this->getCategoryId()},
+                   name = '{$this->getName()}',
+                   description = '{$this->getDescription()}',
+                   price = {$this->getPrice()},
+                   stock = {$this->getStock()},
+                   offter = {$this->getOffter()},
+                   date = '{$this->getDate()}',
+                   image = '{$this->getImage()}' 
+                WHERE id = {$this->getId()}
+            ;";
+
+        $save=$this->db->query($update);
 
         $result = false;
         if($save){

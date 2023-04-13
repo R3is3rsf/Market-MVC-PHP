@@ -42,9 +42,9 @@
             <p class="text-danger"><?=$_SESSION['error']['date'] ?></p>
         <?php endif; ?>
         <label class="text-secondary form-label" for="date">Date</label>
-        <input class="form-control" type="date" name="date" id="date" placeholder>
+        <input class="form-control" type="date" name="date" id="date" require>
         <label class="text-secondary form-label" for="image">Image</label>
-        <input class="form-control" type="file" name="image" id="image" placeholder>
+        <input class="form-control" type="file" name="image" id="image" require>
         
         <?php if(isset($_SESSION['error']['category'])):  ?>
             <p class="text-danger"><?=$_SESSION['error']['category'] ?></p>
