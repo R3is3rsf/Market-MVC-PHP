@@ -111,7 +111,7 @@ class Product{
             {$this->getPrice()},
             {$this->getStock()},
             {$this->getOffter()},
-            {$this->getDate()},
+            '{$this->getDate()}',
             '{$this->getImage()}'
             );";
 

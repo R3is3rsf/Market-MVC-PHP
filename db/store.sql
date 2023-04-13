@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-04-2023 a las 16:22:30
+-- Tiempo de generación: 13-04-2023 a las 19:40:16
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -38,12 +38,9 @@ CREATE TABLE `categories` (
 
 INSERT INTO `categories` (`id`, `name`) VALUES
 (1, 'Consolas'),
-(2, 'Laptops'),
-(3, 'PC Desktop'),
-(4, 'Accesories'),
-(5, 'Software'),
-(6, 'TV'),
-(7, 'Roku');
+(2, 'Pc desktop'),
+(3, 'Laptops'),
+(4, 'Accesories');
 
 -- --------------------------------------------------------
 
@@ -98,7 +95,8 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `category_id`, `name`, `description`, `price`, `stock`, `offter`, `date`, `image`) VALUES
-(1, 1, 'PS3', 'Consola de video juegos de Play Station', 250.00, 100, 1, '2023-04-04', NULL);
+(1, 1, 'Ps3', 'Ps3 new and two controls', 200.00, 100, 2, '0000-00-00', 'ps3.png'),
+(2, 1, 'Ps4', 'Ps4 new and two controls', 300.00, 50, 1, '2023-04-13', 'ps4.png');
 
 -- --------------------------------------------------------
 
@@ -121,18 +119,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `lastname`, `email`, `password`, `rol`, `image`) VALUES
-(1, 'Admin', 'admin', 'admin@admin.com', 'password', 1, NULL),
-(2, 'Roberto', 'Perez', 'robertoperez@gmail.com', 'password', 2, NULL),
-(3, 'Jose', 'Cuevas', 'jocu@gmail.com', '$2y$04$PZaVgIqAhwzQluct08GuO.VhvVx8wo2ZDD5oOw2ruvIxnYvmYAlGO', 2, NULL),
-(4, 'Jey', 'Zubi', 'jey@gmail.com', '$2y$04$9jwRfgcGAo.n2ou571MGa.ZO0ZbXJAjyExzf/7rsS1lCOmQsERJj6', 2, NULL),
-(5, 'Rojo', 'Pecu', 'rcu@hotmail.com', '$2y$04$IVMwgcEiC/Z.6WjCIRSANe2r5gvjGSt/kkk0FRfTBglq0U/izm59G', 2, NULL),
-(6, 'Another', 'Register', 'test@outlook.es', '$2y$04$.SczlndeMvtOQaONhlBhP.cDbo7dZWVxNv.0XVDSddvEm1VFRslcO', 2, NULL),
-(7, 'Another', 'Register', 'other@gmail.com', '$2y$04$iWhtl2xiS9RiwxsL7nc9O.2rlp9LMGasaQVkAbRs/0wSAffFCh3Gi', 2, NULL),
-(8, 'Pedro', 'Gonzales', 'Pego@gmail.com', '$2y$04$Mckcwgspfrv2dZYP6b14/OXkwSKn6y.kGUqk65imEO5ZbLVftQSC2', 2, NULL),
-(9, '', 'dsdsds', 'rcddu@hotmail.com', '$2y$04$PZyodG7yqjfntCtB9sZsB.qJpAhSH43rtYprfTioWk2UlaSnukO/C', 2, NULL),
-(10, '444', 'Register', 'jocu4@gmail.com', '$2y$04$.P9X8q0ddYftudOeFPJgFecmqHQTBUBzHucjT8d2tr4Ki.IsN08h.', 2, NULL),
-(11, 'Roberto', 'Perez', 'robertoperez297@gmail.com', '$2y$04$wu6eL1C/I8Il5d2Dq5ts5eDXRQFAcDaq14ONxiAGnySGh6ZR/f2WW', 1, NULL),
-(12, 'Jeruddy', 'Zubiria', 'ruddy_1589@gmail.com', '$2y$04$wu8sWX/bQ0i5a8gEgyjVierKdmvDYb5R.1D1JhHfi7nRuJF1O/1mm', 2, NULL);
+(1, 'Admin', 'Admin', 'admin@admin.com', '$2y$04$mGL7k8YtlFwRZGezuxY.C.59AR6CYrS2BS7PzN8BuvAnzN4CF7XcS', 1, NULL),
+(2, 'Roberto', 'Perez', 'robertoperez297@gmail.com', '$2y$04$WOgpIICfwXEhU9Z3iCewguqLulXMe5cw56WQmQbPxKaRP8YfiuTNG', 2, NULL);
 
 --
 -- Índices para tablas volcadas
@@ -181,7 +169,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `line_orders`
@@ -199,13 +187,13 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT de la tabla `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas

@@ -35,7 +35,7 @@
         <label class="text-secondary form-label" for="offter">Offter</label>
         <select class="form-select" name="offter" id="offter">
             <option value="1">Yes</option>
-            <option value="0">No</option>
+            <option value="2">No</option>
         </select>
         
         <?php if(isset($_SESSION['error']['date'])):  ?>

@@ -23,8 +23,8 @@ class ProductController{
             $name=isset($_POST['name']) ? $_POST['name'] : false;
             $description=isset($_POST['description']) ? $_POST['description'] : false;
             $price=isset($_POST['price']) ? floatval($_POST['price']) : false;
-            $stock=isset($_POST['stock']) ? (int)$_POST['stock'] : false;
-            $offter=isset($_POST['offter']) ? (int)$_POST['offter'] : false;
+            $stock=isset($_POST['stock']) ? intval($_POST['stock']) : false;
+            $offter=isset($_POST['offter']) ? intval($_POST['offter']) : false;
             $date=isset($_POST['date']) ? $_POST['date'] : false;
             $categoryId=isset($_POST['category']) ? (int)$_POST['category'] : false;
             //Upload files
@@ -60,6 +60,8 @@ class ProductController{
             }
 
             if(count($error)==0 && $categoryId && $name && $description && $price && $stock && $offter && $date){
+                // var_dump($date);
+                // die();
                 $products= new Product;
                 $products->setCategoryId($categoryId);
                 $products->setName($name);

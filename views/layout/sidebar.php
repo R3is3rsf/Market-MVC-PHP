@@ -11,6 +11,7 @@
                             <input class="form-control" name="password" id="password" type="password" placeholder="yourSecredPassword" required>
                         </div>
                         <button type="submit" class="btn btn-primary mt-2">Entrar</button>
+                        <a href="<?=base_url?>user/register">No esta registrado?</a>
                     </form>
                     <?php else: ?>
                         <p class="text-success">Bienvenido <?php echo $_SESSION['login']->name.' '.$_SESSION['login']->lastname;?></p>
