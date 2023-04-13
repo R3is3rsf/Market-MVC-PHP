@@ -9,11 +9,17 @@ require_once 'views/layout/sidebar.php';
 if($_GET){
     $controllerName = !empty($_GET['controller']) ? $_GET['controller'].'Controller':controller_default;
     $action = !empty($_GET['action']) ? $_GET['action']:action_default;
+    $id = !empty($_GET['id']) ? intval($_GET['id']) : false;
+
     if(class_exists($controllerName)){
 
         $controllerObject = new $controllerName();
         if(method_exists($controllerObject,$action)){
-            $controllerObject->$action();
+            if($id){
+                $controllerObject->$action($id);
+            }else{
+                $controllerObject->$action();
+            }
         }else{
             $action= action_default;
             $controllerObject->$action();

@@ -1,5 +1,5 @@
 <?php
 
-define ("base_url","http://localhost/personal/masterphp/8.-proyecto-php-mvc/");
+define ("base_url","http://localhost/Market-MVC-PHP/");
 define("controller_default","ProductController");
 define("action_default","index");

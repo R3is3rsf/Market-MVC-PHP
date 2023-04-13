@@ -86,6 +86,23 @@ class ProductController{
         }
     }
 
+    public function delete($id){
+        Utils::whoIs();
+        $products=new Product;
+        $products->setId($id);
+        $delete = $products->delete();
 
+        if($delete){
+            $_SESSION['delete']='complete';
+        }else{
+            $_SESSION['delete']='Error';
+        }
+
+        header('Location:'.base_url.'product/management');
+    }
+
+    public function update(){
+        var_dump($_GET);
+    }
 
 }

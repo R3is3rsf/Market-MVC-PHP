@@ -16,6 +16,10 @@ class Product{
         $this->db= Database::connect();
     }
 
+    public function setId($id){
+        $this->id=$this->db->real_escape_string(intval($id));
+
+    }
     public function setCategoryId($category_id){
         //$this->category_id=intval($category_id);
         $this->category_id=$this->db->real_escape_string(intval($category_id));
@@ -98,6 +102,7 @@ class Product{
     }
 
     public function save(){
+        Utils::whoIs();
         $insert="INSERT INTO products VALUES (
             null,
             {$this->getCategoryId()},
@@ -118,6 +123,19 @@ class Product{
         }
         return $result;
      
+    }
+
+    public function delete(){
+        Utils::whoIs();
+        $sql= "delete from products where id={$this->getId()};";
+        $delete = $this->db->query($sql);
+
+        $mensage= false;
+        if($delete){
+            $mensage=true;
+        }
+        return $mensage;
+
     }
 
 
