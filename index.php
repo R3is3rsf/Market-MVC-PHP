@@ -7,7 +7,8 @@ require_once 'helpers/utils.php';
 require_once 'views/layout/header.php';
 require_once 'views/layout/sidebar.php';
 if($_GET){
-    $controllerName = !empty($_GET['controller']) ? $_GET['controller'].'Controller':controller_default;
+    
+    $controllerName = !empty($_GET['controller']) ? ucfirst($_GET['controller']).'Controller':controller_default;
     $action = !empty($_GET['action']) ? $_GET['action']:action_default;
     $id = !empty($_GET['id']) ? intval($_GET['id']) : false;
 

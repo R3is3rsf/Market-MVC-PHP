@@ -1,10 +1,8 @@
-<IfModule mod_rewrite.c>
 RewriteEngine on
-ErrorDocument 404 http://localhost/personal/masterphp/8.-proyecto-php-mvc/error/index
+ErrorDocument 404 http://localhost/Market-MVC-PHP/error/index
 
 RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteCond %{SCRIPT_FILENAME} !-f
 
-RewriteRule ^/?([a-zA-Z]+)/([a-zA-Z]+)/?([0-9]+)? index.php?controller=$1&action=$2&id=$3
+RewriteRule ^/?([a-zA-Z]+)/([a-zA-Z]+)/?([0-9]+)? /Market-MVC-PHP/index.php?controller=$1&action=$2&id=$3
 
-</IfModule>
